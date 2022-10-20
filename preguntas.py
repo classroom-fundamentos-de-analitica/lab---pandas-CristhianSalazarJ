@@ -175,8 +175,9 @@ def pregunta_10():
     """
     tbl0_copy3 = tbl0.copy()
     tbl0_copy3["_c2"] = tbl0["_c2"].astype(str)
-
-    return tbl0_copy3.groupby("_c1")["_c2"].aggregate(lambda x: (":").join(sorted(x.tolist())))
+    res10 = tbl0_copy3.groupby("_c1")["_c2"].aggregate(lambda x: (":").join(sorted(x.tolist())))
+    
+    return res10
 
 
 def pregunta_11():
@@ -196,8 +197,8 @@ def pregunta_11():
     39   39    a,d,f
     """
     tbl1_copy = tbl1.copy()
-    return tbl1_copy.groupby("_c0")["_c4"].aggregate(lambda x: (",").join(sorted(x.tolist())))
-
+    res11 = tbl1_copy.groupby("_c0")["_c4"].agg(lambda x: (",").join(sorted(x.tolist())))
+    return res11
 
 def pregunta_12():
     """
@@ -217,7 +218,8 @@ def pregunta_12():
     tbl2_copy = tbl2.copy()
     tbl2_copy["_c5b"] = tbl2["_c5b"].astype(str)
     tbl2_copy["_c5"] = tbl2_copy["_c5a"] + ":" + tbl2_copy["_c5b"]
-    return tbl2_copy.groupby("_c0")["_c5"].aggregate(lambda x: (",").join(sorted(x.tolist())))
+    res12 = tbl2_copy.groupby("_c0")["_c5"].agg(lambda x: (",").join(sorted(x.tolist())))
+    return res12
 
 
 def pregunta_13():
