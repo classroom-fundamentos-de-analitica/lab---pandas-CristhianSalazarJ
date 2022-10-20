@@ -174,10 +174,12 @@ def pregunta_10():
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
     tbl0_copy3 = tbl0.copy()
-    tbl0_copy3["_c2"] = tbl0["_c2"].astype(str)
-    res10 = tbl0_copy3.groupby("_c1")["_c2"].agg(lambda x: ":".join(sorted(x)))
+    res10 = pd.pivot_table(tbl0_copy3, 
+                                values='_c2',
+                                index=['_c1'],
+                                aggfunc=lambda x: ':'.join(str(v) for v in sorted(x)))
     
-    return res10.reset_index()
+    return res10
 
 
 def pregunta_11():
